@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dispatches",
+  "info": {
+    "singularName": "dispatch",
+    "pluralName": "dispatches",
+    "displayName": "Dispatch"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "IdProduct": {
+      "type": "biginteger"
+    },
+    "Cantidad": {
+      "type": "integer"
+    }
+  }
+}

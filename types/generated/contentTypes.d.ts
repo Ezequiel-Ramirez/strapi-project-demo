@@ -362,6 +362,75 @@ export interface AdminUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiDispatchDispatch extends Schema.CollectionType {
+  collectionName: 'dispatches';
+  info: {
+    displayName: 'Dispatch';
+    pluralName: 'dispatches';
+    singularName: 'dispatch';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Cantidad: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::dispatch.dispatch',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    IdProduct: Attribute.BigInteger;
+    publishedAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::dispatch.dispatch',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiEnvioEnvio extends Schema.CollectionType {
+  collectionName: 'envios';
+  info: {
+    description: '';
+    displayName: 'Envio';
+    pluralName: 'envios';
+    singularName: 'envio';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Cantidad: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::envio.envio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    IdProduct: Attribute.BigInteger;
+    publishedAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::envio.envio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease extends Schema.CollectionType {
   collectionName: 'strapi_releases';
   info: {
@@ -798,6 +867,8 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::dispatch.dispatch': ApiDispatchDispatch;
+      'api::envio.envio': ApiEnvioEnvio;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

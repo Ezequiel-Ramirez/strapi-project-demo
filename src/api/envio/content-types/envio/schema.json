@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "envios",
+  "info": {
+    "singularName": "envio",
+    "pluralName": "envios",
+    "displayName": "Envio",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "IdProduct": {
+      "type": "biginteger"
+    },
+    "Cantidad": {
+      "type": "integer",
+      "min": 1
+    }
+  }
+}
